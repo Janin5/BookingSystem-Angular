@@ -1,0 +1,23 @@
+<div class="services-container">
+  <h3>Stiliști Disponibili</h3>
+
+  <table class="services-table">
+    <thead>
+      <tr>
+        <th>Nume</th>
+        <th>Descriere</th>
+        <th>Programează</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let s of stylists">
+        <td class="service-name">{{ s.name }}</td>
+        <td>{{ s.description }}</td>
+
+        <td>
+          <button mat-raised-button (click)="openDialog(s)">Alege</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,24 @@
+<div class="services-container">
+  <h3>Servicii Disponibile</h3>
+
+  <table class="services-table">
+    <thead>
+      <tr>
+        <th>Serviciu</th>
+        <th>Durată</th>
+        <th>Preț</th>
+        <th>Programează</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let p of procedures">
+        <td class="service-name">{{ p.name }}</td>
+        <td>{{ p.duration }}</td>
+        <td class="price">{{ p.price }} RON</td>
+        <td>
+          <button mat-raised-button (click)="openDialog(p)">Programează</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

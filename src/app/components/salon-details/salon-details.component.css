@@ -1,0 +1,26 @@
+.salon-details-wrapper {
+  max-width: 800px;
+  margin: 40px auto; /* Centrare pagină */
+  padding: 30px;
+  background: #f9f9f9;
+  border-radius: 16px;
+}
+
+.salon-title {
+  font-size: 2.5rem;
+  color: #3f51b5;
+  border-bottom: 2px solid #007bff;
+  padding-bottom: 10px;
+}
+
+.info-item {
+  font-size: 1.2rem;
+  margin: 15px 0;
+}
+
+.back-link {
+  display: inline-block;
+  margin-top: 20px;
+  color: #666;
+  text-decoration: none;
+}

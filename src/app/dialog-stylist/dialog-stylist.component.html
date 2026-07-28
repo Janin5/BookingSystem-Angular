@@ -1,0 +1,30 @@
+<div class="dialog-container">
+  <!-- Header cu titlu -->
+  <div class="dialog-header">
+    <h2 class="dialog-title">Alege serviciu</h2>
+    <button mat-icon-button mat-dialog-close class="close-btn">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+
+  <!-- Card minimalist cu specialistul selectat -->
+  <div class="specialist-badge">
+    <span class="label">SPECIALIST:</span>
+    <span class="value">{{ stylist.name }}</span>
+  </div>
+
+  <!-- Lista de proceduri cu scroll -->
+  <mat-dialog-content class="procedures-list">
+    <div class="procedure-card" *ngFor="let proc of procedures">
+      <div class="procedure-meta">
+        <span class="procedure-name">{{ proc.name }}</span>
+        <span class="procedure-info"
+          >{{ proc.duration }} min • {{ proc.price }} lei</span
+        >
+      </div>
+      <button mat-flat-button class="book-btn" (click)="bookProcedure(proc)">
+        Programează
+      </button>
+    </div>
+  </mat-dialog-content>
+</div>

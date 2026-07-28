@@ -1,0 +1,59 @@
+<div class="salon-details-wrapper" *ngIf="salon; else loading">
+  <h1 class="salon-title">{{ salon.name }}</h1>
+  <hr />
+
+  <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start">
+    <mat-tab label="Informații">
+      <div class="tab-content">
+        <p class="info-item">
+          <strong>Descriere:</strong> {{ salon.description }}
+        </p>
+        <p class="info-item">
+          <strong>📍 Locație:</strong>
+          <a
+            [href]="
+              'https://www.google.com/maps/search/?api=1&query=' + salon.adress
+            "
+            target="_blank"
+          >
+            {{ salon.adress }}
+          </a>
+        </p>
+        <p class="info-item"><strong>📞 Telefon:</strong> {{ salon.phone }}</p>
+      </div>
+    </mat-tab>
+
+    <mat-tab label="Servicii">
+      <ng-template matTabContent>
+        <div class="tab-content">
+          <app-procedure-list [salonId]="salon!.id"></app-procedure-list>
+        </div>
+      </ng-template>
+    </mat-tab>
+
+    <mat-tab label="Stiliști">
+      <ng-template matTabContent>
+        <div class="tab-content">
+          <app-stylist-list [salonId]="salon!.id"></app-stylist-list>
+        </div>
+      </ng-template>
+    </mat-tab>
+  </mat-tab-group>
+
+  <div class="actions" style="margin-top: 20px">
+    <button mat-raised-button color="primary">
+      Rezervă acum la acest salon
+    </button>
+  </div>
+
+  <br />
+  <a routerLink="/saloane" class="back-link">← Înapoi la listă</a>
+</div>
+
+<!-- Acesta este acum in afara div-ului de mai sus -->
+<ng-template #loading>
+  <div style="text-align: center; margin-top: 50px">
+    <mat-spinner style="margin: 0 auto"></mat-spinner>
+    <p>Se încarcă detaliile...</p>
+  </div>
+</ng-template>

@@ -1,1 +1,13 @@
-/* You can add global styles to this file, and also import other style files */
+/* Forțăm toată aplicația să aibă o lățime maximă rezonabilă */
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f9; /* Să vedem fundalul */
+}
+
+/* Limităm conținutul principal */
+.container {
+  max-width: 900px;
+  margin: 0 auto; /* Centrare */
+  width: 95%; /* Să arate bine pe mobil */
+}
