@@ -1,0 +1,152 @@
+:host {
+  display: block;
+  width: 420px;
+  max-width: 95vw;
+  background-color: #121824;
+  color: #ffffff;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+  font-family: inherit;
+}
+
+.dialog-container {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.dialog-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dialog-title {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 600;
+  color: #f8fafc;
+}
+
+.close-btn {
+  color: #94a3b8;
+}
+
+.calendar-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.calendar-nav button {
+  color: #94a3b8;
+}
+
+.month-label {
+  font-size: 16px;
+  font-weight: 600;
+  color: #f8fafc;
+  text-transform: capitalize;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 6px;
+}
+
+.weekday {
+  text-align: center;
+  font-size: 12px;
+  font-weight: 600;
+  color: #64748b;
+  padding-bottom: 4px;
+}
+
+.day-cell {
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  font-size: 14px;
+  color: #475569;
+  cursor: default;
+}
+
+.day-cell.empty {
+  visibility: hidden;
+}
+
+.day-cell.available {
+  color: #f8fafc;
+  background: #1e293b;
+  cursor: pointer;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.day-cell.available:hover {
+  border-color: rgba(56, 189, 248, 0.3);
+  background: #233044;
+}
+
+.day-cell.selected {
+  background: #06b6d4;
+  color: #0f172a;
+  font-weight: 600;
+}
+
+.slots-section {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.slots-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: #94a3b8;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.slots-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.slot-btn {
+  background: #1e293b;
+  color: #f8fafc;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  padding: 8px 14px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.slot-btn:hover {
+  border-color: rgba(56, 189, 248, 0.3);
+  background: #233044;
+}
+
+.slot-btn.selected {
+  background: #06b6d4;
+  color: #0f172a;
+  font-weight: 600;
+  border-color: #06b6d4;
+}
+
+.empty-state {
+  text-align: center;
+  color: #94a3b8;
+  padding: 16px;
+  font-style: italic;
+  background: #1e293b;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}

@@ -1,1 +1,46 @@
-<p>booking works!</p>
+<div class="dialog-container">
+  <div class="dialog-header">
+    <h2 class="dialog-title">Alege data și ora</h2>
+    <button mat-icon-button mat-dialog-close class="close-btn">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+
+  <div class="calendar-nav">
+    <span class="month-label">{{ displayedMonth | date: "MMMM yyyy" }}</span>
+    <button mat-icon-button (click)="nextMonth()">
+      <mat-icon>chevron_right</mat-icon>
+    </button>
+  </div>
+
+  <div class="calendar-grid">
+    <div class="weekday" *ngFor="let day of weekDays">{{ day }}</div>
+    <div
+      class="day-cell"
+      *ngFor="let cell of calendarCells"
+      [class.empty]="!cell"
+      [class.available]="cell && isAvailable(cell)"
+      [class.selected]="cell && isSelected(cell)"
+      (click)="cell && selectDate(cell)"
+    >
+      {{ cell ? cell.getDate() : "" }}
+    </div>
+  </div>
+
+  <div class="slots-section" *ngIf="selectedDate">
+    <div class="slots-title">Ore disponibile</div>
+    <div class="slots-list" *ngIf="slots.length > 0; else noSlots">
+      <button
+        class="slot-btn"
+        *ngFor="let slot of slots"
+        [class.selected]="selectedSlot === slot"
+        (click)="selectSlot(slot)"
+      >
+        {{ slot }}
+      </button>
+    </div>
+    <ng-template #noSlots>
+      <div class="empty-state">Niciun interval disponibil în această zi</div>
+    </ng-template>
+  </div>
+</div>
