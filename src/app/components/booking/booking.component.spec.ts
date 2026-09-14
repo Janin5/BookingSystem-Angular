@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DialogProcedureComponent } from './dialog-procedure.component';
+import { BookingComponent } from './booking.component';
 
-describe('DialogProcedureComponent', () => {
-  let component: DialogProcedureComponent;
-  let fixture: ComponentFixture<DialogProcedureComponent>;
+describe('BookingComponent', () => {
+  let component: BookingComponent;
+  let fixture: ComponentFixture<BookingComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [DialogProcedureComponent]
+      imports: [BookingComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(DialogProcedureComponent);
+    fixture = TestBed.createComponent(BookingComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

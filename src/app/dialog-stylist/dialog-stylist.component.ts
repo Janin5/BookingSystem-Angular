@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatButton } from '@angular/material/button';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
@@ -16,7 +16,7 @@ import { MatIconModule } from '@angular/material/icon';
   templateUrl: './dialog-stylist.component.html',
   styleUrl: './dialog-stylist.component.css',
 })
-export class DialogStylistComponent implements OnInit {
+export class DialogStylistComponent {
   url = API_CONFIG.baseUrl + ApiPaths.Stylist;
   stylist: Stylist;
   procedures: Procedure[] = [];
@@ -26,27 +26,6 @@ export class DialogStylistComponent implements OnInit {
     private http: HttpClient,
   ) {
     this.stylist = data.stylist;
-  }
-
-  ngOnInit(): void {
-    console.log(this.stylist.id);
-    this.http
-      .get<any>(`${this.url}/${this.stylist.id}/with-procedures`)
-      .subscribe({
-        next: (response) => {
-          // 1. Salvăm întreg obiectul primit (care conține și numele stilistului actualizat dacă e nevoie)
-          this.stylist = response;
-
-          // 2. Extragem array-ul de proceduri din proprietatea 'procedures' a DTO-ului
-          this.procedures = response.procedures;
-
-          console.log('Proceduri primite:', this.procedures);
-          console.log(
-            'Este procedures un array?',
-            Array.isArray(this.procedures),
-          );
-        },
-      });
   }
 
   bookProcedure(proc: Procedure) {}

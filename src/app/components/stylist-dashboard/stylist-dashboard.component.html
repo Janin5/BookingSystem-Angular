@@ -1,0 +1,70 @@
+<div class="dashboard-container">
+  <!-- Secțiunea de profil a stilistului -->
+  @if (stylist) {
+    <div class="stylist-header">
+      <h2>Bună, {{ stylist.name }}</h2>
+      <p>Bine ai revenit! Aici îți poți gestiona programările.</p>
+    </div>
+  }
+
+  <hr />
+
+  <!-- Secțiunea cu programări -->
+  <div class="appointments-section">
+    <h3>Programările mele</h3>
+
+    <div class="appointments-grid">
+      @for (app of appointments; track app.id) {
+        <div class="appointment-card">
+          <div class="appointment-info">
+            <p>
+              <strong>Data:</strong>
+              {{ app.appointmentDate | date: "dd-MM-yyyy HH:mm" }}
+            </p>
+            <p>
+              <strong>Status:</strong>
+              @switch (app.status) {
+                @case (status.Pending) {
+                  <span class="badge pending">În așteptare</span>
+                }
+                @case (status.Confirmed) {
+                  <span class="badge confirmed">Confirmată</span>
+                }
+                @case (status.Cancelled) {
+                  <span class="badge cancelled">Anulată</span>
+                }
+              }
+            </p>
+          </div>
+
+          <!-- Acțiuni rapide (Butoane pentru schimbat statusul) -->
+          <div class="appointment-actions">
+            @if (app.status === status.Pending) {
+              <button
+                class="btn-confirm"
+                (click)="changeStatus(app.id, status.Confirmed)"
+              >
+                Confirmă
+              </button>
+              <button
+                class="btn-cancel"
+                (click)="changeStatus(app.id, status.Cancelled)"
+              >
+                Anulează
+              </button>
+            } @else if (app.status === status.Confirmed) {
+              <button
+                class="btn-cancel"
+                (click)="changeStatus(app.id, status.Cancelled)"
+              >
+                Anulează
+              </button>
+            }
+          </div>
+        </div>
+      } @empty {
+        <p class="no-appointments">Nu ai nicio programare în acest moment.</p>
+      }
+    </div>
+  </div>
+</div>

@@ -9,15 +9,17 @@ import { ApiPaths } from '../enums/api-paths';
   providedIn: 'root',
 })
 export class SalonService {
-  private baseUrl = API_CONFIG.baseUrl + ApiPaths.Salon;
+  private url = API_CONFIG.baseUrl + ApiPaths.Salon;
 
   constructor(private http: HttpClient) {}
 
   getSalons(): Observable<SalonListItem[]> {
-    return this.http.get<SalonListItem[]>(`${this.baseUrl}/SalonsList`);
+    return this.http.get<SalonListItem[]>(this.url);
   }
 
   getSalonById(id: string): Observable<SalonDetails> {
-    return this.http.get<SalonDetails>(`${this.baseUrl}/${id}`);
+    return this.http.get<SalonDetails>(`${this.url}/${id}`);
   }
+
+  //filterSalons(salon: SalonListItem[], query: string) {}
 }

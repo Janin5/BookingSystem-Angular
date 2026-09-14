@@ -1,0 +1,38 @@
+<div class="dialog-container">
+  <!-- Header -->
+  <div class="dialog-header">
+    <h2 class="dialog-title">{{ procedure.name }}</h2>
+    <button mat-icon-button mat-dialog-close class="close-btn">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+
+  <!-- Badge -->
+  <div class="specialist-badge">
+    <span class="label">DISPONIBILI:</span>
+    <span class="value"
+      >{{ stylists.length }}
+      {{ stylists.length === 1 ? "stilist" : "stilisti" }}</span
+    >
+  </div>
+
+  <!-- Lista - CLASE GENERICE -->
+  <div class="list-container" *ngIf="stylists.length > 0; else noItems">
+    <div class="list-item" *ngFor="let stylist of stylists">
+      <div class="item-meta">
+        <div class="item-name">{{ stylist.name }}</div>
+        <div class="item-info" *ngIf="stylist.description">
+          {{ stylist.description }}
+        </div>
+      </div>
+      <button mat-raised-button (click)="openDialog(stylist)">→</button>
+    </div>
+  </div>
+
+  <!-- Empty State -->
+  <ng-template #noItems>
+    <div class="empty-state">
+      Niciun stilist disponibil pentru această procedură
+    </div>
+  </ng-template>
+</div>

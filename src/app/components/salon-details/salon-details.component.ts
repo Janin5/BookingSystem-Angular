@@ -8,7 +8,6 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { Procedure } from '../../models/procedure';
 import { SalonDetails } from '../../models/salon';
 import { ProcedureListComponent } from '../procedure-list/procedure-list.component';
-import { StylistListComponent } from '../stylist-list/stylist-list.component';
 
 @Component({
   selector: 'app-salon-details',
@@ -19,7 +18,6 @@ import { StylistListComponent } from '../stylist-list/stylist-list.component';
     MatProgressSpinnerModule,
     RouterLink,
     ProcedureListComponent,
-    StylistListComponent,
   ],
   templateUrl: './salon-details.component.html',
   styleUrl: './salon-details.component.css',

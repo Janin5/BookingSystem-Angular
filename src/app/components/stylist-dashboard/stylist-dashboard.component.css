@@ -1,0 +1,119 @@
+.dashboard-container {
+  max-width: 900px;
+  margin: 32px auto;
+  padding: 0 24px 48px;
+}
+
+.stylist-header h2 {
+  margin: 0 0 4px;
+  font-size: 1.75rem;
+  font-weight: 700;
+}
+
+.stylist-header p {
+  margin: 0;
+  color: var(--text-secondary);
+}
+
+hr {
+  border: none;
+  border-top: 1px solid var(--border-subtle);
+  margin: 20px 0 24px;
+}
+
+.appointments-section h3 {
+  margin: 0 0 16px;
+  font-size: 1.15rem;
+  font-weight: 600;
+}
+
+.appointments-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+}
+
+.appointment-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 18px;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.appointment-info p {
+  margin: 6px 0;
+  color: var(--text-primary);
+}
+
+.badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.badge.pending {
+  background: var(--warning-bg);
+  color: var(--warning);
+}
+
+.badge.confirmed {
+  background: var(--success-bg);
+  color: var(--success);
+}
+
+.badge.cancelled {
+  background: var(--danger-bg);
+  color: var(--danger);
+}
+
+.appointment-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.appointment-actions button {
+  flex: 1;
+  border: none;
+  border-radius: var(--radius-sm);
+  padding: 8px 12px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-confirm {
+  background: var(--success-bg);
+  color: var(--success);
+}
+
+.btn-confirm:hover {
+  background: var(--success);
+  color: #fff;
+}
+
+.btn-cancel {
+  background: var(--danger-bg);
+  color: var(--danger);
+}
+
+.btn-cancel:hover {
+  background: var(--danger);
+  color: #fff;
+}
+
+.no-appointments {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 40px 20px;
+  color: var(--text-secondary);
+  background: var(--bg-surface);
+  border-radius: var(--radius-md);
+  border: 1px dashed var(--border-subtle);
+}

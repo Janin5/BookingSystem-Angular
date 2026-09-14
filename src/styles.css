@@ -1,13 +1,62 @@
-/* Forțăm toată aplicația să aibă o lățime maximă rezonabilă */
+:root {
+  /* Design tokens - tema deschisă, aliniată cu paleta din dialoguri (accent cyan) */
+  --bg-page: #eef2f5;
+  --bg-surface: #ffffff;
+  --bg-surface-alt: #f8fafc;
+  --border-subtle: #e2e8f0;
+  --border-accent: rgba(8, 145, 178, 0.35);
+
+  --text-primary: #5a77b9;
+  --text-secondary: #64748b;
+  --text-on-accent: #ffffff;
+
+  --accent: #0891b2;
+  --accent-strong: #06b6d4;
+  --accent-hover: #0e7490;
+
+  --success: #16a34a;
+  --success-bg: #dcfce7;
+  --warning: #b45309;
+  --warning-bg: #fef3c7;
+  --danger: #dc2626;
+
+  --danger-bg: #fee2e2;
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+
+  --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.06);
+  --shadow-md: 0 4px 12px rgba(15, 23, 42, 0.08);
+  --shadow-lg: 0 15px 35px rgba(15, 23, 42, 0.12);
+
+  --font-family: "Roboto", "Segoe UI", system-ui, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   padding: 0;
-  background-color: #f4f4f9; /* Să vedem fundalul */
+  background-color: var(--bg-page);
+  color: var(--text-primary);
+  font-family: var(--font-family);
 }
 
-/* Limităm conținutul principal */
+h1,
+h2,
+h3 {
+  color: var(--text-primary);
+}
+
+a {
+  color: var(--accent);
+}
+
 .container {
   max-width: 900px;
-  margin: 0 auto; /* Centrare */
-  width: 95%; /* Să arate bine pe mobil */
+  margin: 0 auto;
+  width: 95%;
 }

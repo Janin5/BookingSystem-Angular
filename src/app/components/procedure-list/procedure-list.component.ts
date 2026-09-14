@@ -4,7 +4,7 @@ import { Procedure } from '../../models/procedure';
 import { CommonModule } from '@angular/common';
 import { MatDialog } from '@angular/material/dialog';
 import { MatButton } from '@angular/material/button';
-import { DialogProcedureComponent } from '../../dialog-procedure/dialog-procedure.component';
+import { ProcedureStylistsDialogComponent } from '../../dialogs/procedure-stylists-dialog/procedure-stylists-dialog.component';
 
 @Component({
   selector: 'app-procedure-list',
@@ -22,15 +22,16 @@ export class ProcedureListComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.procedureService.getProceduresBySalon(this.salonId).subscribe({
+    this.procedureService.getProcedures({ salonId: this.salonId }).subscribe({
       next: (data) => {
         this.procedures = data;
+        console.log('proceduri:', this.procedures);
       },
     });
   }
 
   openDialog(selectedProcedure: Procedure) {
-    this.dialog.open(DialogProcedureComponent, {
+    this.dialog.open(ProcedureStylistsDialogComponent, {
       data: { procedure: selectedProcedure },
     });
   }

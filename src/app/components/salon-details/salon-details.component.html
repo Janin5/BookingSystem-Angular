@@ -2,7 +2,11 @@
   <h1 class="salon-title">{{ salon.name }}</h1>
   <hr />
 
-  <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start">
+  <mat-tab-group
+    mat-stretch-tabs="false"
+    mat-align-tabs="start"
+    [preserveContent]="true"
+  >
     <mat-tab label="Informații">
       <div class="tab-content">
         <p class="info-item">
@@ -34,26 +38,25 @@
     <mat-tab label="Stiliști">
       <ng-template matTabContent>
         <div class="tab-content">
-          <app-stylist-list [salonId]="salon!.id"></app-stylist-list>
+          <!-- TODO: de reconstruit odata cu programul stilistilor -->
         </div>
       </ng-template>
     </mat-tab>
   </mat-tab-group>
 
-  <div class="actions" style="margin-top: 20px">
+  <div class="actions">
     <button mat-raised-button color="primary">
       Rezervă acum la acest salon
     </button>
   </div>
 
-  <br />
   <a routerLink="/saloane" class="back-link">← Înapoi la listă</a>
 </div>
 
 <!-- Acesta este acum in afara div-ului de mai sus -->
 <ng-template #loading>
-  <div style="text-align: center; margin-top: 50px">
-    <mat-spinner style="margin: 0 auto"></mat-spinner>
+  <div class="loading-state">
+    <mat-spinner></mat-spinner>
     <p>Se încarcă detaliile...</p>
   </div>
 </ng-template>

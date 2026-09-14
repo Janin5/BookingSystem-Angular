@@ -1,7 +1,8 @@
 export enum ApiPaths {
-  Salon = '/Salon',
-  Customer = '/Customer',
-  Booking = '/Booking',
-  Procedure = '/Procedure',
-  Stylist = '/Stylist',
+  Salon = '/Salons',
+  Customer = '/Customers',
+  Booking = '/Bookings',
+  Procedure = '/Procedures',
+  Stylist = '/Stylists',
+  Appointment = '/Appointments',
 }

@@ -1,26 +1,67 @@
 .salon-details-wrapper {
   max-width: 800px;
-  margin: 40px auto; /* Centrare pagină */
-  padding: 30px;
-  background: #f9f9f9;
-  border-radius: 16px;
+  margin: 32px auto;
+  padding: 32px;
+  background: var(--bg-surface);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border-subtle);
 }
 
 .salon-title {
-  font-size: 2.5rem;
-  color: #3f51b5;
-  border-bottom: 2px solid #007bff;
-  padding-bottom: 10px;
+  margin: 0 0 12px;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+hr {
+  border: none;
+  border-top: 1px solid var(--border-subtle);
+  margin-bottom: 8px;
+}
+
+.tab-content {
+  padding: 24px 4px;
 }
 
 .info-item {
-  font-size: 1.2rem;
-  margin: 15px 0;
+  font-size: 1.05rem;
+  margin: 14px 0;
+  color: var(--text-primary);
+}
+
+.info-item a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.info-item a:hover {
+  text-decoration: underline;
+}
+
+.actions {
+  margin-top: 28px;
 }
 
 .back-link {
   display: inline-block;
   margin-top: 20px;
-  color: #666;
+  color: var(--text-secondary);
   text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.back-link:hover {
+  color: var(--accent);
+}
+
+.loading-state {
+  text-align: center;
+  margin-top: 80px;
+  color: var(--text-secondary);
+}
+
+.loading-state mat-spinner {
+  margin: 0 auto 16px;
 }

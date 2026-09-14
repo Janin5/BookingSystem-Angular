@@ -13,10 +13,6 @@
       <tr *ngFor="let s of stylists">
         <td class="service-name">{{ s.name }}</td>
         <td>{{ s.description }}</td>
-
-        <td>
-          <button mat-raised-button (click)="openDialog(s)">Alege</button>
-        </td>
       </tr>
     </tbody>
   </table>

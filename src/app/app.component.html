@@ -1,7 +1,19 @@
-<button (click)="login()">Login</button>
-<button (click)="logout()">Logout</button>
+<header class="app-header">
+  <a routerLink="/saloane" class="brand">BookingApp</a>
 
-<nav>
-  <a routerLink="/saloane">Vezi lista de saloane</a>
-</nav>
-<router-outlet />
+  <nav class="app-nav">
+    <a routerLink="/saloane">Saloane</a>
+  </nav>
+
+  <div class="auth-actions">
+    @if (auth.isAuthenticated$ | async) {
+      <button class="btn btn-outline" (click)="logout()">Logout</button>
+    } @else {
+      <button class="btn btn-primary" (click)="login()">Login</button>
+    }
+  </div>
+</header>
+
+<main class="app-main">
+  <router-outlet />
+</main>
