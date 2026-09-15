@@ -65,6 +65,44 @@ export class BookingComponent implements OnInit {
   }
 
   nextMonth(): void {
-    this.onMonthSelected(this.displayedMonth);
+    const nextMonth = new Date(
+      this.displayedMonth.getFullYear(),
+      this.displayedMonth.getMonth() + 1,
+      1,
+    );
+    this.onMonthSelected(nextMonth);
+  }
+
+  get calendarCells(): (Date | null)[] {
+    const lastDayOfTheMonth = new Date(
+      this.displayedMonth.getFullYear(),
+      this.displayedMonth.getMonth() + 1,
+      0,
+    ).getDate();
+    const cells: (Date | null)[] = [];
+    const firstDayOfWeek =
+      (new Date(
+        this.displayedMonth.getFullYear(),
+        this.displayedMonth.getMonth(),
+        1,
+      ).getDay() +
+        6) %
+      7; //in ce zi pica 1 a lunii; conventie 0=duminca, 1=luni, etc..
+
+    for (let i = 0; i < firstDayOfWeek; i++) {
+      cells.push(null);
+    }
+
+    for (let day = 1; day <= lastDayOfTheMonth; day++) {
+      cells.push(
+        new Date(
+          this.displayedMonth.getFullYear(),
+          this.displayedMonth.getMonth(),
+          day,
+        ),
+      );
+    }
+
+    return cells;
   }
 }
