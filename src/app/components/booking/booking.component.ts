@@ -30,6 +30,7 @@ export class BookingComponent implements OnInit {
   displayedMonth: Date = new Date();
   availableDates: string[] = [];
   weekDays: string[] = ['l', 'ma', 'mi', 'j', 'v', 's', 'd'];
+  selectedDate: Date | null = null;
 
   private monthChange = new BehaviorSubject<Date>(new Date());
 
@@ -42,6 +43,14 @@ export class BookingComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadAvailability();
+  }
+  //Formateaza manual data locala
+  private toDateOnlyString(date: Date): string {
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const day = String(date.getDate()).padStart(2, '0');
+
+    return `${year}-${month}-${day}`;
   }
 
   loadAvailability(): void {
@@ -61,6 +70,9 @@ export class BookingComponent implements OnInit {
 
   onMonthSelected(month: Date): void {
     this.displayedMonth = month;
+    this.selectedDate = null;
+    this.selectedSlot = null;
+    this.slots = [];
     this.monthChange.next(month);
   }
 
@@ -87,7 +99,7 @@ export class BookingComponent implements OnInit {
         1,
       ).getDay() +
         6) %
-      7; //in ce zi pica 1 a lunii; conventie 0=duminca, 1=luni, etc..
+      7; //in ce zi pica 1 a lunii; conventie 0=duminca, 1=luni, etc.., trannsform ca 0= luni etc..
 
     for (let i = 0; i < firstDayOfWeek; i++) {
       cells.push(null);
@@ -104,5 +116,36 @@ export class BookingComponent implements OnInit {
     }
 
     return cells;
+  }
+
+  isAvailable(cell: Date): boolean {
+    return this.availableDates.includes(this.toDateOnlyString(cell));
+  }
+
+  isSelected(cell: Date): boolean {
+    return (
+      !!this.selectedDate &&
+      this.toDateOnlyString(cell) === this.toDateOnlyString(this.selectedDate)
+    );
+  }
+
+  selectDate(cell: Date): void {
+    this.selectedDate = cell;
+    this.selectedSlot = null;
+
+    if (!this.isAvailable(cell)) return;
+
+    const cellDateToString = this.toDateOnlyString(cell);
+    this.stylistService
+      .getFreeSlots(
+        this.data.stylistId,
+        cellDateToString,
+        this.data.procedureId,
+      )
+      .subscribe((slots) => (this.slots = slots));
+  }
+
+  selectSlot(slot: Slot): void {
+    this.selectedSlot = slot;
   }
 }

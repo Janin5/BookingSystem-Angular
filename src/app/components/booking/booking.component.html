@@ -38,6 +38,13 @@
       >
         {{ slot }}
       </button>
+      <button
+        class="confirm-btn"
+        *ngIf="selectedSlot"
+        (click)="confirmBooking()"
+      >
+        Confirmă programarea
+      </button>
     </div>
     <ng-template #noSlots>
       <div class="empty-state">Niciun interval disponibil în această zi</div>

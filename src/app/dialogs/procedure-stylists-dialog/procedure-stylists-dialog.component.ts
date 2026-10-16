@@ -28,9 +28,11 @@ export class ProcedureStylistsDialogComponent {
   }
 
   openDialog(selectedStylist: Stylist) {
-    this.dialogRef.close();
-    this.dialog.open(BookingComponent, {
-      data: { procedureId: this.procedure.id, stylistId: selectedStylist.id },
+    this.dialogRef.afterClosed().subscribe(() => {
+      this.dialog.open(BookingComponent, {
+        data: { procedureId: this.procedure.id, stylistId: selectedStylist.id },
+      });
     });
+    this.dialogRef.close();
   }
 }

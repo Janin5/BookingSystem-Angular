@@ -6,9 +6,15 @@ export enum Status {
 
 export interface Appointment {
   id: string;
-  salonId: string;
-  status: Status;
-  customerId: string;
+  procedureId: string;
+  procedureName: string;
+  stylistId: string;
+  stylistName: string;
+  appointmentDate: string;
+  status: Status.Confirmed;
+}
+
+export interface CreateAppointment {
   procedureId: string;
   stylistId: string;
   appointmentDate: string;
